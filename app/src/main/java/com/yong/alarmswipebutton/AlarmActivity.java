@@ -31,6 +31,9 @@ public class AlarmActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_alarm);
 
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED
+                | WindowManager.LayoutParams.FLAG_DISMISS_KEYGUARD);
+
         calendar = Calendar.getInstance();
         swipeButton = (SwipeButton) findViewById(R.id.swipe_btn);
         timeText = (TextView) findViewById(R.id.time);
@@ -39,10 +42,6 @@ public class AlarmActivity extends AppCompatActivity {
 
         swipeButton.setText("출근 시간입니다......");
 
-        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON
-                | WindowManager.LayoutParams.FLAG_DISMISS_KEYGUARD
-                | WindowManager.LayoutParams.FLAG_TURN_SCREEN_ON
-                | WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED);
         // 잠금 화면 위로 activity 띄워줌
 
         mediaPlayer = MediaPlayer.create(getApplicationContext(),alert);   // 소리를 재생할 MediaPlayer
